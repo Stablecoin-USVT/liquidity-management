@@ -460,24 +460,24 @@
             <h2>Reserve Asset Allocation Structure</h2>
             <div class="allocation-grid">
                 <div class="allocation-item">
-                    <span class="percentage">75%</span>
+                    <span class="percentage">50%</span>
                     <div class="asset-type">Cash & Fiat Reserves</div>
                     <div class="asset-desc">Held in Tier-1 Islamic financial institutions across USD, SAR, AED, MYR, and IDR currencies</div>
                 </div>
                 <div class="allocation-item">
-                    <span class="percentage">10%</span>
+                    <span class="percentage">25%</span>
                     <div class="asset-type">Sukuk (Islamic Bonds)</div>
                     <div class="asset-desc">High-grade sovereign and corporate Sukuk with staggered maturity profiles for continuous liquidity</div>
                 </div>
                 <div class="allocation-item">
-                    <span class="percentage">10%</span>
-                    <div class="asset-type">Alternative Islamic InstrumentsGold Reserves</div>
-                    <div class="asset-desc">Murabaha, Ijarah, and Istisna-based liquidity instruments for enhanced diversification</div>
-                </div>
-                <div class="allocation-item">
-                    <span class="percentage">5%</span>
+                    <span class="percentage">15%</span>
                     <div class="asset-type">Gold Reserves</div>
                     <div class="asset-desc">Physical bullion and Shariah-compliant ETFs as hedge against fiat volatility and inflation</div>
+                </div>
+                <div class="allocation-item">
+                    <span class="percentage">10%</span>
+                    <div class="asset-type">Alternative Islamic Instruments</div>
+                    <div class="asset-desc">Murabaha, Ijarah, and Istisna-based liquidity instruments for enhanced diversification</div>
                 </div>
             </div>
         </div>
@@ -682,19 +682,19 @@
             `;
 
             modalContent.innerHTML = `
-                <h3 style="color: #1e5f4f; margin-bottom: 20px; font-size: 1.5rem;">📄 Liquidity Management Document Access</h3>
-                <p style="margin-bottom: 30px; line-height: 1.6;">The complete 40-page Shariah-Compliant Liquidity Management document provides a comprehensive framework for the $1 trillion USD stablecoin initiative. This institutional-grade document covers all aspects of Islamic finance compliance, regulatory frameworks, risk management, and strategic implementation across global markets.</p>
+                <h3 style="color: #1e5f4f; margin-bottom: 30px; font-size: 1.5rem; text-align: center;">📄 Liquidity Management Document</h3>
+                
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <button onclick="openPDFDocument()" 
-                            style="background: #1e5f4f; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
-                        🔗 Open Liquidity Document
+                            style="background: #1e5f4f; color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                        🔗 Open PDF Document
                     </button>
                     <button onclick="downloadPDF()" 
-                            style="background: #2d8a6b; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
-                        📥 Download HTML Version
+                            style="background: #2d8a6b; color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 1rem;">
+                        📥 Download PDF
                     </button>
                     <button onclick="this.closest('.modal-overlay').remove()" 
-                            style="background: #666; color: white; padding: 12px 25px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold;">
+                            style="background: #666; color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 1rem;">
                         ✕ Close
                     </button>
                 </div>
@@ -713,82 +713,41 @@
         }
 
         function openPDFDocument() {
-            // Generate and open the most comprehensive version possible
-            const comprehensiveHTML = generateComprehensiveHTML();
-            const blob = new Blob([comprehensiveHTML], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
+            // PDF URL with proper encoding for spaces
+            const pdfUrl = "https://stablecoin-usvt.github.io/liquidity-management/Shariah-Compliant%20Liquidity%20Management%20for%20USVT%20Stablecoin%20.pdf";
             
-            // Open in new window
-            const newWindow = window.open(url, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
-            
-            if (newWindow) {
-                // Set a title for the new window
-                newWindow.document.title = 'Shariah-Compliant Liquidity Management Document';
-                
-                // Show success message
-                setTimeout(() => {
-                    alert(`📄 Document Opened Successfully!
-
-✅ The Shariah-Compliant Liquidity Management document is now open in a new window.
-
-📋 Document Features:
-• Professional formatting and layout
-• Complete table of contents with navigation
-• All 8 major sections included
-• Asset allocation breakdowns and frameworks
-• Strategic implementation roadmaps
-• Risk management protocols
-• Regulatory compliance structures
-
-💡 Tip: You can bookmark, print, or save this document from the new window.
-
-⚠️ Note: This version contains comprehensive content within technical constraints. In a production environment, the complete 40-page PDF would be fully accessible.`);
-                }, 500);
-            } else {
-                alert(`🚫 Popup Blocked
-
-Please allow popups for this site to open the document, or use the Download option instead.
-
-The document is ready to be displayed but your browser blocked the popup window.`);
-            }
+            // Open PDF in new window
+            window.open(pdfUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
             
             // Close the modal
             document.querySelector('.modal-overlay').remove();
         }
 
         function downloadPDF() {
-            // Generate the most comprehensive HTML version possible within technical constraints
-            const comprehensiveHTML = generateComprehensiveHTML();
-            const blob = new Blob([comprehensiveHTML], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
+            // PDF URL with proper encoding for spaces
+            const pdfUrl = "https://stablecoin-usvt.github.io/liquidity-management/Shariah-Compliant%20Liquidity%20Management%20for%20USVT%20Stablecoin%20.pdf";
             
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Shariah-Compliant-Liquidity-Management-USVT-Stablecoin-March-2025.html';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            
-            // Show completion message
-            alert(`📥 Download Complete!
-
-✅ Downloaded: Shariah-Compliant-Liquidity-Management-USVT-Stablecoin-March-2025.html
-
-📄 Document Contents:
-• Complete cover page and table of contents
-• Executive Summary (full content)
-• Strategic Liquidity Objectives (comprehensive)
-• Reserve Structuring & Asset Allocation 
-• Liquidity Management Mechanisms
-• Regulatory Compliance Framework
-• Risk Management & Contingency Planning
-• Long-Term Stability & Strategic Expansion
-• Complete conclusion
-
-⚠️ Technical Note: Due to HTML artifact constraints, this version contains the most comprehensive content possible. In a production environment, the complete 40-page PDF content would be fully accessible.
-
-The downloaded file is ready for viewing, sharing, and printing.`);
+            // Try to trigger download using fetch and blob approach
+            fetch(pdfUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Shariah-Compliant-Liquidity-Management-USVT-Stablecoin.pdf';
+                    link.style.display = 'none';
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Clean up the blob URL
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    // Fallback: open in new tab for manual download
+                    window.open(pdfUrl, '_blank');
+                });
             
             // Close the modal
             document.querySelector('.modal-overlay').remove();
@@ -997,7 +956,7 @@ The downloaded file is ready for viewing, sharing, and printing.`);
 
                 <div class="allocation-grid">
                     <div class="allocation-item">
-                        <div class="percentage">75%</div>
+                        <div class="percentage">50%</div>
                         <h4>Cash and Fiat Reserves</h4>
                         <ul style="padding-left: 20px; margin: 10px 0;">
                             <li>Held within Tier-1 Islamic financial institutions to facilitate instant liquidity provisioning and seamless redemption.</li>
@@ -1007,7 +966,7 @@ The downloaded file is ready for viewing, sharing, and printing.`);
                     </div>
 
                     <div class="allocation-item">
-                        <div class="percentage">10%</div>
+                        <div class="percentage">25%</div>
                         <h4>Sukuk (Islamic Bonds)</h4>
                         <ul style="padding-left: 20px; margin: 10px 0;">
                             <li>Allocation to high-grade sovereign and corporate Sukuk that meet the compliance standards set by AAOIFI and IFSB.</li>
@@ -1017,14 +976,33 @@ The downloaded file is ready for viewing, sharing, and printing.`);
                     </div>
 
                     <div class="allocation-item">
-                        <span class="percentage">10%</span>
-                        <div class="asset-type">Gold Reserves</div>
-                        <div class="asset-desc">Held in physical bullion and Shariah-compliant exchange-traded gold funds (ETFs) to hedge against fiat currency volatility and inflationary pressures. Strategically diversified across multiple vaults in economically stable jurisdictions to mitigate sovereign risk and enhance asset security. Fully allocated within an Islamic financial framework that aligns with traditional asset-backed monetary reserves.</div>
+                        <div class="percentage">15%</div>
+                        <h4>Gold Reserves</h4>
+                        <ul style="padding-left: 20px; margin: 10px 0;">
+                            <li>Held in physical bullion and Shariah-compliant exchange-traded gold funds (ETFs) to hedge against fiat currency volatility and inflationary pressures.</li>
+                            <li>Strategically diversified across multiple vaults in economically stable jurisdictions to mitigate sovereign risk and enhance asset security.</li>
+                            <li>Fully allocated within an Islamic financial framework that aligns with traditional asset-backed monetary reserves.</li>
+                        </ul>
                     </div>
+
                     <div class="allocation-item">
-                        <span class="percentage">5%</span>
-                        <div class="asset-type">Alternative Islamic Liquidity Instruments</div>
-                        <div class="asset-desc">Deployment of Murabaha (cost-plus financing), Ijarah (lease-based assets), and Istisna (Islamic project financing) as additional liquidity instruments. Participation in Shariah-compliant money market funds designed to optimize liquidity allocation while strictly adhering to halal financial standards. Integration with Islamic microfinance platforms, supporting economic inclusion while providing liquidity to underdeveloped markets within the Organization of Islamic Cooperation (OIC) economies.</div>
+                        <div class="percentage">15%</div>
+                        <h4>Gold Reserves</h4>
+                        <ul style="padding-left: 20px; margin: 10px 0;">
+                            <li>Held in physical bullion and Shariah-compliant exchange-traded gold funds (ETFs) to hedge against fiat currency volatility and inflationary pressures.</li>
+                            <li>Strategically diversified across multiple vaults in economically stable jurisdictions to mitigate sovereign risk and enhance asset security.</li>
+                            <li>Fully allocated within an Islamic financial framework that aligns with traditional asset-backed monetary reserves.</li>
+                        </ul>
+                    </div>
+
+                    <div class="allocation-item">
+                        <div class="percentage">10%</div>
+                        <h4>Alternative Islamic Liquidity Instruments</h4>
+                        <ul style="padding-left: 20px; margin: 10px 0;">
+                            <li>Deployment of Murabaha (cost-plus financing), Ijarah (lease-based assets), and Istisna (Islamic project financing) as additional liquidity instruments.</li>
+                            <li>Participation in Shariah-compliant money market funds designed to optimize liquidity allocation while strictly adhering to halal financial standards.</li>
+                            <li>Integration with Islamic microfinance platforms, supporting economic inclusion while providing liquidity to underdeveloped markets within the Organization of Islamic Cooperation (OIC) economies.</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1376,10 +1354,10 @@ The downloaded file is ready for viewing, sharing, and printing.`);
             </section>
             
         </div>
-        
-        <!-- Blank Green Outro Page -->
-        <div style="background: linear-gradient(135deg, #1e5f4f 0%, #2d8a6b 100%); min-height: 100vh; page-break-before: always;">
-        </div>
+    </div>
+
+    <!-- Blank Green Outro Page -->
+    <div style="background: linear-gradient(135deg, #1e5f4f 0%, #2d8a6b 100%); min-height: 100vh; width: 100%; position: relative; margin-top: 40px;">
     </div>
 </body>
 </html>`;
